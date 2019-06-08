@@ -18,7 +18,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 import java.text.SimpleDateFormat;
 
-public class ParseLogJob extends Configured implements Tool {
+public class SimpleParseLogJob extends Configured implements Tool {
 
     /**
      * 解析日志方法
@@ -33,6 +33,7 @@ public class ParseLogJob extends Configured implements Tool {
         for (String s : logPart) {
             System.out.println(s);
         }
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         long timeTag = dateFormat.parse(logPart[0]).getTime();
         String logFileName = logPart[1];
@@ -70,7 +71,7 @@ public class ParseLogJob extends Configured implements Tool {
     public int run(String[] args) throws Exception {
         Configuration conf = getConf();
         Job job = Job.getInstance(conf);
-        job.setJarByClass(ParseLogJob.class);
+        job.setJarByClass(SimpleParseLogJob.class);
         job.setJobName("parseJob");
         job.setMapperClass(LogMapper.class);
         job.setNumReduceTasks(0);
@@ -90,7 +91,7 @@ public class ParseLogJob extends Configured implements Tool {
     }
 
     public static void main(String[] args) throws Exception {
-        int run = ToolRunner.run(new Configuration(), new ParseLogJob(), args);
+        int run = ToolRunner.run(new Configuration(), new SimpleParseLogJob(), args);
         System.exit(run);
     }
 }
