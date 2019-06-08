@@ -29,10 +29,6 @@ public class SimpleParseLogJob extends Configured implements Tool {
      */
     public static Text parseLog(String row) throws Exception {
         String[] logPart = StringUtils.split(row, "$$");
-        System.out.println("=======================================");
-        for (String s : logPart) {
-            System.out.println(s);
-        }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         long timeTag = dateFormat.parse(logPart[0]).getTime();
