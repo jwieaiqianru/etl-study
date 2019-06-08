@@ -96,13 +96,13 @@ coverage.xml
 docs/_build/
 
 # PyBuilder
-target/
+
 
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
-
+*.iml
 
 ## Directory-based project format:
 .idea/
